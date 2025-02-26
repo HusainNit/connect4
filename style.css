@@ -6,14 +6,14 @@ body {
     width: 1028px;
     min-height: 100vh;
     margin: 0 auto;
-    background-color: gray;
+   background-image: linear-gradient(to bottom left ,blue, lightblue,rgb(236, 107, 107),red);
 }
 
 .board {
     min-width: 800px;
     min-height: 400px;
     background-color: black;
-    margin: 50px auto;
+    margin: 30px auto;
     display: grid;
     grid-template-columns: auto auto auto auto auto auto auto;
     grid-template-rows: auto auto auto auto auto auto;
@@ -26,12 +26,39 @@ body {
     height: 80px;
     background-color: white;
     border-radius: 50%;
-    margin: 10px auto; 
+    margin: 5px auto; 
     border:0.1px solid rgb(0, 0, 0) ; 
 }
 .play:hover {
     cursor: pointer;
-   
-   box-shadow:  0 0 10px #fb0606;
+   box-shadow:  0 0 10px #fb0606; 
+}
+
+#msg {
     
+    margin: 0 auto;
+    font-weight: bolder;
+    font-size: 20px;
+}
+
+nav {
+    display: absolute;
+    background-color: black;
+    color: white;
+}
+
+#rest {
+    display: block;
+    margin: 10px auto;
+    color: white;
+    background-color: black;
+    padding: 20px 50px;
+    border-radius: 10px;
+    font-weight: bolder;
+    font-size: 20px;
+    border: 0px;
+}
+#rest:hover {
+    cursor: pointer;
+    background-color: rgb(37, 37, 37);
 }

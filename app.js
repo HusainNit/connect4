@@ -1,5 +1,5 @@
 /*-------------------------------- Constants --------------------------------*/
-const turns=['red','blue']
+const player=['red','blue']
 
 
 /*---------------------------- Variables (state) ----------------------------*/
@@ -25,7 +25,7 @@ let tie;
 
 /*-------------------------------- Functions --------------------------------*/
 const init=()=>{
-    currentTurn =turns[0];
+    currentTurn =player[0];
     winner=false;
     tie=false;
     for(let row=0;row<board.length;row++){
@@ -50,10 +50,37 @@ const handelPlay=(event)=>{
             board[rows][column-1] =currentTurn;
             console.log(document.getElementById(`${rows+1}-${column}`));
             document.getElementById(`${rows+1}-${column}`).style.backgroundColor=currentTurn;
+            switchPlayerTurn()
             break;
         }
     }  
 }
+
+const checkForWinner=()=>{
+
+    for(let row=0;row<board.length;row++){
+        for(let column=0;column<board[row].length;column++){
+            board[row][column]='';
+        }
+    }
+
+}
+
+const switchPlayerTurn = ()=>{
+    if(winner===true){
+        return;
+    }
+    else{
+        if(currentTurn===player[0]){
+            currentTurn=player[1]
+        }
+        else{
+            currentTurn=player[0]
+        }
+
+    }
+}
+
 
 
 /*----------------------------- Event Listeners -----------------------------*/
