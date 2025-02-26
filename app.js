@@ -1,3 +1,8 @@
+/*-------------------------------- Constants --------------------------------*/
+const turns=['red','blue']
+
+
+/*---------------------------- Variables (state) ----------------------------*/
 let board=[
     ['','','','','','',''], //top                    // 1, 2, 3, 4, 5, 6 
 
@@ -11,12 +16,18 @@ let board=[
 
     ['','','','','','',''],// bottom                 // 1, 2, 3, 4, 5, 6 
 ]
+let currentTurn;
+let winner;
+let tie;
 
-const turns=['red','blue']
-let currentTurn='red';
+/*------------------------ Cached Element References ------------------------*/
 
+
+/*-------------------------------- Functions --------------------------------*/
 const init=()=>{
-    currentTurn ='red';
+    currentTurn =turns[0];
+    winner=false;
+    tie=false;
     for(let row=0;row<board.length;row++){
         for(let column=0;column<board[row].length;column++){
             board[row][column]='';
@@ -27,7 +38,7 @@ init()
 
 const handelPlay=(event)=>{
     console.log(`press ${event.target.id}`);
-    // console.log(document.querySelector(`#${event.target.id}));//dont works
+    //console.log(document.querySelector(event.target.id));//dont works
     let getId = document.getElementById(event.target.id);
     let splitId=getId.id.split('-');
     let column=splitId[1];
@@ -44,6 +55,8 @@ const handelPlay=(event)=>{
     }  
 }
 
+
+/*----------------------------- Event Listeners -----------------------------*/
 const circle=document.querySelectorAll(".play");
 circle.forEach((cNum)=>{
     cNum.addEventListener('click',handelPlay)

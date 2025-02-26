@@ -26,8 +26,12 @@ body {
     height: 80px;
     background-color: white;
     border-radius: 50%;
-    margin: 10px auto;  
+    margin: 10px auto; 
+    border:0.1px solid rgb(0, 0, 0) ; 
 }
 .play:hover {
     cursor: pointer;
+   
+   box-shadow:  0 0 10px #fb0606;
+    
 }
