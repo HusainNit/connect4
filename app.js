@@ -35,7 +35,7 @@ const updateMsg=()=>{
         messageEl.textContent=`this is tie game`;
     }
     else{
-        messageEl.textContent=`${turn} wins`;
+        messageEl.textContent=`${currentTurn} wins`;
     }
 }
 
@@ -56,6 +56,10 @@ init()
 
 
 const handelPlay=(event)=>{
+    if(winner===true){
+        return;
+    }
+    //else if()
     console.log(`press ${event.target.id}`);
     //console.log(document.querySelector(event.target.id));//don't works
     let getId = document.getElementById(event.target.id);
@@ -69,30 +73,32 @@ const handelPlay=(event)=>{
             board[rows][column-1] =currentTurn;
             console.log(document.getElementById(`${rows+1}-${column}`));
             document.getElementById(`${rows+1}-${column}`).style.backgroundColor=currentTurn;
-            switchPlayerTurn()
-            checkForWinner(column)
-            updateMsg()
             break;
         }
-    }  
+    } 
+    checkForWinner(column)
+    switchPlayerTurn()
+    updateMsg() 
 }
 
 
 
 const checkForWinner=(column)=>{
+    // let getId = document.getElementById(event.target.id);
+    // let splitId=getId.id.split('-');
+    // let column=splitId[1];
+    // let row=splitId[0];
     console.log("no win");
-    for(let rows=board.length-1;rows>=0;rows++){
-        if(board[rows][column] === currentTurn    //fix it
-           &&
-           board[rows-1][column-1] === currentTurn
-           &&
-           board[rows-2][column-1] === currentTurn
-           &&
-           board[rows-3][column-1] === currentTurn
+    let color=player[0];
+    for(let rows=board.length-1;rows>=0;rows--){
+        if (board[rows][column - 1] === color
+            && rows >= 3 && board[rows - 1][column - 1] === color
+            && rows >= 2 && board[rows - 2][column - 1] === color
+            && rows >= 1 && board[rows - 3][column - 1] === color
         ){
            winner =true;
            console.log("win");
-           messageEl.textContent="s"
+           messageEl.textContent=`${color} has won`;
         }
     }
 
@@ -108,7 +114,6 @@ const switchPlayerTurn = ()=>{
         }
         else{
             currentTurn=player[0]
-
         }
 
     }
