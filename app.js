@@ -21,16 +21,19 @@ let winner;
 let tie;
 
 /*------------------------ Cached Element References ------------------------*/
+const circles=document.querySelectorAll(".play");
+const restBtn=document.querySelector('#rest');
 
 
 /*-------------------------------- Functions --------------------------------*/
-const init=()=>{
+const init=(event)=>{
     currentTurn =player[0];
     winner=false;
     tie=false;
     for(let row=0;row<board.length;row++){
         for(let column=0;column<board[row].length;column++){
             board[row][column]='';
+            document.getElementById(`${row+1}-${column+1}`).style.backgroundColor='white';
         }
     }
 }
@@ -38,7 +41,7 @@ init()
 
 const handelPlay=(event)=>{
     console.log(`press ${event.target.id}`);
-    //console.log(document.querySelector(event.target.id));//dont works
+    //console.log(document.querySelector(event.target.id));//don't works
     let getId = document.getElementById(event.target.id);
     let splitId=getId.id.split('-');
     let column=splitId[1];
@@ -56,11 +59,14 @@ const handelPlay=(event)=>{
     }  
 }
 
-const checkForWinner=()=>{
-
-    for(let row=0;row<board.length;row++){
-        for(let column=0;column<board[row].length;column++){
-            board[row][column]='';
+const checkForWinner=(event)=>{
+    let getId = document.getElementById(event.target.id);
+    let splitId=getId.id.split('-');
+    let column=splitId[1];
+    let row=splitId[0];
+    for(let rows=board.length-1;rows>=0;rows++){
+        if(board[rows][column-1] === currentTurn){
+           
         }
     }
 
@@ -76,6 +82,7 @@ const switchPlayerTurn = ()=>{
         }
         else{
             currentTurn=player[0]
+
         }
 
     }
@@ -84,7 +91,8 @@ const switchPlayerTurn = ()=>{
 
 
 /*----------------------------- Event Listeners -----------------------------*/
-const circle=document.querySelectorAll(".play");
-circle.forEach((cNum)=>{
-    cNum.addEventListener('click',handelPlay)
+circles.forEach((currentCircle)=>{
+    currentCircle.addEventListener('click',handelPlay)
 })
+
+restBtn.addEventListener('click',init);

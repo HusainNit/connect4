@@ -3,10 +3,15 @@
 }
 
 body {
+    margin: 0;
+    background-image: linear-gradient(to bottom left ,blue, lightblue,rgb(236, 107, 107),red);
+}
+
+.container {
     width: 1028px;
     min-height: 100vh;
     margin: 0 auto;
-   background-image: linear-gradient(to bottom left ,blue, lightblue,rgb(236, 107, 107),red);
+   
 }
 
 .board {
@@ -31,20 +36,24 @@ body {
 }
 .play:hover {
     cursor: pointer;
-   box-shadow:  0 0 10px #fb0606; 
+   box-shadow:  0 0 50px #06fb8d; 
 }
 
 #msg {
-    
-    margin: 0 auto;
+    display: block;
     font-weight: bolder;
     font-size: 20px;
+    margin: 0 auto;
 }
 
 nav {
-    display: absolute;
     background-color: black;
     color: white;
+}
+
+h1 {
+    margin: 0;
+    padding: 10px 10px 10px 50px;
 }
 
 #rest {
