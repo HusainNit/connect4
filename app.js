@@ -4,17 +4,17 @@ const player=['red','blue']
 
 /*---------------------------- Variables (state) ----------------------------*/
 let board=[
-    ['','','','','','',''], //top                    // 1, 2, 3, 4, 5, 6 
+    ['','','','','','',''], //top                    // 1, 2, 3, 4, 5, 6, 7
 
-    ['','','','','','',''],                          // 1, 2, 3, 4, 5, 6
+    ['','','','','','',''],                          // 1, 2, 3, 4, 5, 6, 7
 
-    ['','','','','','',''],                          // 1, 2, 3, 4, 5, 6 
+    ['','','','','','',''],                          // 1, 2, 3, 4, 5, 6, 7 
 
-    ['','','','','','',''],                          // 1, 2, 3, 4, 5, 6
+    ['','','','','','',''],                          // 1, 2, 3, 4, 5, 6, 7
 
-    ['','','','','','',''],                          // 1, 2, 3, 4, 5, 6
+    ['','','','','','',''],                          // 1, 2, 3, 4, 5, 6, 7
 
-    ['','','','','','',''],// bottom                 // 1, 2, 3, 4, 5, 6 
+    ['','','','','','',''],// bottom                 // 1, 2, 3, 4, 5, 6, 7
 ]
 let currentTurn;
 let winner;
@@ -27,17 +27,7 @@ const messageEl=document.querySelector(`.msg`);
 
 
 /*-------------------------------- Functions --------------------------------*/
-const updateMsg=()=>{
-    if(winner===false && tie===false){
-        messageEl.textContent=`${currentTurn} turn`;
-    }
-    else if(winner===false && tie===true){
-        messageEl.textContent=`this is tie game`;
-    }
-    else{
-        messageEl.textContent=`${currentTurn} wins`;
-    }
-}
+
 
 const init=(event)=>{
     currentTurn =player[0];
@@ -51,6 +41,19 @@ const init=(event)=>{
         }
     }
 }
+
+const updateMsg=()=>{
+    if(winner===false && tie===false){
+        messageEl.textContent=`${currentTurn} turns`;
+    }
+    else if(winner===false && tie===true){
+        messageEl.textContent=`this is tie game`;
+    }
+    else{
+        messageEl.textContent=`${currentTurn} wins`;
+    }
+}
+
 init()
 
 
@@ -76,25 +79,48 @@ const handelPlay=(event)=>{
             break;
         }
     } 
-    checkForWinner(column)
+    checkForWinner(column,row)
     switchPlayerTurn()
     updateMsg() 
 }
 
 
 
-const checkForWinner=(column)=>{
-    // let getId = document.getElementById(event.target.id);
-    // let splitId=getId.id.split('-');
-    // let column=splitId[1];
-    // let row=splitId[0];
+const checkForWinner=(column,row)=>{
     console.log("no win");
-    let color=player[0];
+    checkColumn(column);
+    checkRow(row);
+    checkDiagonal();
+}
+
+const checkColumn=(column)=>{
+    if(winner===true){
+        return;
+    }
+    let color=currentTurn;
     for(let rows=board.length-1;rows>=0;rows--){
         if (board[rows][column - 1] === color
-            && rows >= 3 && board[rows - 1][column - 1] === color
-            && rows >= 2 && board[rows - 2][column - 1] === color
-            && rows >= 1 && board[rows - 3][column - 1] === color
+            && (rows >= 3 && board[rows - 1][column - 1] === color)
+            && (rows >= 2 && board[rows - 2][column - 1] === color)
+            && (rows >= 1 && board[rows - 3][column - 1] === color)
+        ){
+           winner =true;
+           console.log("win");
+           messageEl.textContent=`${color} has won`;
+        }
+    }
+}
+
+const checkRow=(row)=>{
+    if(winner===true){
+        return;
+    }
+    let color=currentTurn;
+    for(let rows=board.length-1;rows>=0;rows--){
+        if (board[rows][column - 1] === color
+            && (rows >= 3 && board[rows - 1][column - 1] === color)
+            && (rows >= 2 && board[rows - 2][column - 1] === color)
+            && (rows >= 1 && board[rows - 3][column - 1] === color)
         ){
            winner =true;
            console.log("win");
@@ -102,6 +128,12 @@ const checkForWinner=(column)=>{
         }
     }
 
+}
+
+const checkDiagonal=()=>{
+    if(winner===true){
+        return;
+    }
 }
 
 const switchPlayerTurn = ()=>{
@@ -115,7 +147,6 @@ const switchPlayerTurn = ()=>{
         else{
             currentTurn=player[0]
         }
-
     }
 }
 
