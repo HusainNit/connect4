@@ -23,13 +23,27 @@ let tie;
 /*------------------------ Cached Element References ------------------------*/
 const circles=document.querySelectorAll(".play");
 const restBtn=document.querySelector('#rest');
+const messageEl=document.querySelector(`.msg`);
 
 
 /*-------------------------------- Functions --------------------------------*/
+const updateMsg=()=>{
+    if(winner===false && tie===false){
+        messageEl.textContent=`${currentTurn} turn`;
+    }
+    else if(winner===false && tie===true){
+        messageEl.textContent=`this is tie game`;
+    }
+    else{
+        messageEl.textContent=`${turn} wins`;
+    }
+}
+
 const init=(event)=>{
     currentTurn =player[0];
     winner=false;
     tie=false;
+    updateMsg()
     for(let row=0;row<board.length;row++){
         for(let column=0;column<board[row].length;column++){
             board[row][column]='';
@@ -38,6 +52,8 @@ const init=(event)=>{
     }
 }
 init()
+
+
 
 const handelPlay=(event)=>{
     console.log(`press ${event.target.id}`);
@@ -54,19 +70,29 @@ const handelPlay=(event)=>{
             console.log(document.getElementById(`${rows+1}-${column}`));
             document.getElementById(`${rows+1}-${column}`).style.backgroundColor=currentTurn;
             switchPlayerTurn()
+            checkForWinner(column)
+            updateMsg()
             break;
         }
     }  
 }
 
-const checkForWinner=(event)=>{
-    let getId = document.getElementById(event.target.id);
-    let splitId=getId.id.split('-');
-    let column=splitId[1];
-    let row=splitId[0];
+
+
+const checkForWinner=(column)=>{
+    console.log("no win");
     for(let rows=board.length-1;rows>=0;rows++){
-        if(board[rows][column-1] === currentTurn){
-           
+        if(board[rows][column] === currentTurn    //fix it
+           &&
+           board[rows-1][column-1] === currentTurn
+           &&
+           board[rows-2][column-1] === currentTurn
+           &&
+           board[rows-3][column-1] === currentTurn
+        ){
+           winner =true;
+           console.log("win");
+           messageEl.textContent="s"
         }
     }
 
