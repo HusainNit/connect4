@@ -92,7 +92,7 @@ const checkForWinner=(column,row)=>{
     }
     console.log("no win");
     // checkColumn(column);
-    checkRow(column);
+    checkRow();
     //checkDiagonal(column,row);
 }
 
@@ -110,18 +110,21 @@ const checkColumn=(column)=>{
     }
 }
 
-const checkRow=(column)=>{
+const checkRow=()=>{
     let color=currentTurn;
-    for(let row=board.length-1;row>=0;--row){
-        if (board[row][column - 1] === color
-            && ( board[row ][column ] === color)
-            && ( board[row ][parseInt(column) + 1] === color)
-            && ( board[row ][parseInt(column) + 2] === color)
-        ){
-           winner =true;
-           console.log("win in row");
+    for(let row=board.length-1;row>=0;row--){
+        for(let column=0;column<7;column++){
+            if(board[row][column]===color
+                && board[row][column+1]===color
+                && board[row][column+2]===color
+                && board[row][column+3]===color
+            ){
+                winner =true;
+                console.log("win in row");
+            }
         }
     }
+    
 }
 
 
