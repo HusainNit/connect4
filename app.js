@@ -62,7 +62,6 @@ const handelPlay=(event)=>{
     if(winner===true){
         return;
     }
-    //else if()
     console.log(`press ${event.target.id}`);
     //console.log(document.querySelector(event.target.id));//don't works
     let getId = document.getElementById(event.target.id);
@@ -91,7 +90,7 @@ const checkForWinner=(column,row)=>{
         return;
     }
     console.log("no win");
-    // checkColumn(column);
+    checkColumn(column);
     checkRow();
     //checkDiagonal(column,row);
 }
