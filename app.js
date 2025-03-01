@@ -89,10 +89,10 @@ const checkForWinner=(column,row)=>{
     if(winner===true){
         return;
     }
-    console.log("no win");
-    checkColumn(column);
-    checkRow();
-    //checkDiagonal(column,row);
+    console.log("check win");
+    // checkColumn(column);
+    // checkRow();
+    checkDiagonal(column,row);
 }
 
 const checkColumn=(column)=>{
@@ -104,7 +104,7 @@ const checkColumn=(column)=>{
             && (rows >= 1 && board[rows - 3][column - 1] === color)
         ){
            winner =true;
-           console.log("win in column");
+           console.log("wins in column");
         }
     }
 }
@@ -119,7 +119,7 @@ const checkRow=()=>{
                 && board[row][column+3]===color
             ){
                 winner =true;
-                console.log("win in row");
+                console.log("wins in row");
             }
         }
     }
