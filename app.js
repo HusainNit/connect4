@@ -84,14 +84,14 @@ const handelPlay=(event)=>{
 
 
 
-const checkForWinner=(column,row)=>{
+const checkForWinner=(column)=>{
     if(winner===true || tie ===true){
         return;
     }
     console.log("check win");
     // checkColumn(column);
     // checkRow();
-    checkDiagonal(column,row);
+    checkDiagonal();
 }
 
 const checkForTie=()=>{
