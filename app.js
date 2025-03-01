@@ -59,7 +59,7 @@ init()
 
 
 const handelPlay=(event)=>{
-    if(winner===true){
+    if(winner===true || tie ===true){
         return;
     }
     console.log(`press ${event.target.id}`);
@@ -67,8 +67,6 @@ const handelPlay=(event)=>{
     let getId = document.getElementById(event.target.id);
     let splitId=getId.id.split('-');
     let column=splitId[1];
-    let row=splitId[0];
-    console.log(`row:${row}  column:${column}`);
 
     for(let rows= board.length-1; rows >= 0; rows--) {
         if(board[rows][column-1] === ''){
@@ -78,21 +76,29 @@ const handelPlay=(event)=>{
             break;
         }
     } 
-    checkForWinner(column,row)
-    switchPlayerTurn()
-    updateMsg() 
+    checkForWinner(column);
+    checkForTie();
+    switchPlayerTurn();
+    updateMsg();
 }
 
 
 
 const checkForWinner=(column,row)=>{
-    if(winner===true){
+    if(winner===true || tie ===true){
         return;
     }
     console.log("check win");
     // checkColumn(column);
     // checkRow();
     checkDiagonal(column,row);
+}
+
+const checkForTie=()=>{
+    if(winner===true || tie ===true){
+        return;
+    }
+
 }
 
 const checkColumn=(column)=>{
@@ -129,13 +135,11 @@ const checkRow=()=>{
 
 
 const checkDiagonal=()=>{
-    if(winner===true){
-        return;
-    }
+ 
 }
 
 const switchPlayerTurn = ()=>{
-    if(winner===true){
+    if(winner===true || tie ===true){
         return;
     }
     else{
