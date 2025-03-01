@@ -87,16 +87,16 @@ const handelPlay=(event)=>{
 
 
 const checkForWinner=(column,row)=>{
+    if(winner===true){
+        return;
+    }
     console.log("no win");
     // checkColumn(column);
-    checkRow(column,row);
+    checkRow(column);
     //checkDiagonal(column,row);
 }
 
 const checkColumn=(column)=>{
-    if(winner===true){
-        return;
-    }
     let color=currentTurn;
     for(let rows=board.length-1;rows>=0;rows--){
         if (board[rows][column - 1] === color
@@ -106,15 +106,11 @@ const checkColumn=(column)=>{
         ){
            winner =true;
            console.log("win in column");
-           //messageEl.textContent=`${color} has won`;
         }
     }
 }
 
 const checkRow=(column)=>{
-    if(winner===true){
-        return;
-    }
     let color=currentTurn;
     for(let row=board.length-1;row>=0;--row){
         if (board[row][column - 1] === color
@@ -124,11 +120,11 @@ const checkRow=(column)=>{
         ){
            winner =true;
            console.log("win in row");
-           //messageEl.textContent=`${color} has won`;
         }
     }
-
 }
+
+
 
 const checkDiagonal=()=>{
     if(winner===true){
