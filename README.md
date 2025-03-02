@@ -1,4 +1,4 @@
-<p align="center"><img src="./connect4.jpeg"/></p>
+<p align="center"><img src="./images/connect4.jpeg"/></p>
 <!-- https://github.com/Kamide/connect-n?tab=readme-ov-file , ok :( -->
 
 <br>
