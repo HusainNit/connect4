@@ -1,4 +1,4 @@
-<img align="center" src="./images/connect4.jpeg"/>
+<p align="center"><img src="./images/connect4.jpeg"/></p>
 
 <br>
 
