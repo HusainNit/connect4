@@ -72,12 +72,9 @@ const handelPlay=(event)=>{
     let splitId=getId.id.split('-');
     let column=splitId[1];
 
-    for(let rows= board.length-1; rows >= 0; rows--) {
-        if(board[rows][column-1] === ''){
-            // make methods
-            board[rows][column-1] =currentTurn;
-            console.log(document.getElementById(`${rows+1}-${column}`));
-            document.getElementById(`${rows+1}-${column}`).style.backgroundColor=currentTurn;
+    for(let row= board.length-1; row >= 0; row--) {
+        if(board[row][column-1] === ''){
+            updateBoard(row,column);
             checkForWinner(column);
             checkForTie();
             switchPlayerTurn();
@@ -88,7 +85,11 @@ const handelPlay=(event)=>{
     
 }
 
-
+const updateBoard=(row,column)=>{
+    board[row][column-1] =currentTurn;
+    console.log(document.getElementById(`${row+1}-${column}`));
+    document.getElementById(`${row+1}-${column}`).style.backgroundColor=currentTurn;
+}
 
 const checkForWinner=(column)=>{
     if(winner===true || tie ===true){
@@ -109,7 +110,7 @@ const checkForTie=()=>{
 
 const checkColumn=(column)=>{
     let color=currentTurn;
-    for(let row=board.length-1;row>=0;row--){ //row   not   rows
+    for(let row=board.length-1;row>=0;row--){
         if (board[row][column - 1] === color
             && (row >= 3 && board[row - 1][column - 1] === color)
             && (row >= 2 && board[row - 2][column - 1] === color)
