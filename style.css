@@ -5,10 +5,12 @@
 body {
     margin: 0;
     background-image: linear-gradient(to bottom left ,blue, lightblue,rgb(236, 107, 107),red);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
 }
 
 .container {
-    width: 1028px;
+    max-width: 1028px;
     min-height: 100vh;
     margin: 0 auto;
    
@@ -49,6 +51,9 @@ h2.msg {
 nav {
     background-color: black;
     color: white;
+    display: block;
+    width: 100%;
+    margin: 0;
 }
 
 h1 {
