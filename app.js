@@ -33,7 +33,11 @@ const init=(event)=>{
     currentTurn =player[0];
     winner=false;
     tie=false;
-    updateMsg()
+    restBoard();
+    updateMsg();
+}
+
+const restBoard=()=>{
     for(let row=0;row<board.length;row++){
         for(let column=0;column<board[row].length;column++){
             board[row][column]='';
@@ -47,7 +51,7 @@ const updateMsg=()=>{
         messageEl.textContent=`${currentTurn} turns`;
     }
     else if(winner===false && tie===true){
-        messageEl.textContent=`this is tie game`;
+        messageEl.textContent=`This is tie game`;
     }
     else{
         messageEl.textContent=`${currentTurn} wins`;
@@ -73,13 +77,14 @@ const handelPlay=(event)=>{
             board[rows][column-1] =currentTurn;
             console.log(document.getElementById(`${rows+1}-${column}`));
             document.getElementById(`${rows+1}-${column}`).style.backgroundColor=currentTurn;
+            checkForWinner(column);
+            checkForTie();
+            switchPlayerTurn();
+            updateMsg();
             break;
         }
     } 
-    checkForWinner(column);
-    checkForTie();
-    switchPlayerTurn();
-    updateMsg();
+    
 }
 
 
@@ -89,8 +94,8 @@ const checkForWinner=(column)=>{
         return;
     }
     console.log("check win");
-    // checkColumn(column);
-    // checkRow();
+    checkColumn(column);
+    checkRow();
     checkDiagonal();
 }
 
@@ -98,7 +103,7 @@ const checkForTie=()=>{
     if(winner===true || tie ===true){
         return;
     }
-
+    tie=board.every(row=>row.every(columnCell => columnCell !==''));
 }
 
 const checkColumn=(column)=>{
@@ -135,7 +140,16 @@ const checkRow=()=>{
 
 
 const checkDiagonal=()=>{
- 
+ checkRightToLeft()
+ checkLeftToRight()
+}
+
+const checkRightToLeft=()=>{
+
+}
+
+const checkLeftToRight=()=>{
+
 }
 
 const switchPlayerTurn = ()=>{
