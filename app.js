@@ -109,11 +109,11 @@ const checkForTie=()=>{
 
 const checkColumn=(column)=>{
     let color=currentTurn;
-    for(let rows=board.length-1;rows>=0;rows--){ //row   not   rows
-        if (board[rows][column - 1] === color
-            && (rows >= 3 && board[rows - 1][column - 1] === color)
-            && (rows >= 2 && board[rows - 2][column - 1] === color)
-            && (rows >= 1 && board[rows - 3][column - 1] === color)
+    for(let row=board.length-1;row>=0;row--){ //row   not   rows
+        if (board[row][column - 1] === color
+            && (row >= 3 && board[row - 1][column - 1] === color)
+            && (row >= 2 && board[row - 2][column - 1] === color)
+            && (row >= 1 && board[row - 3][column - 1] === color)
         ){
            winner =true;
            console.log("wins in column");
