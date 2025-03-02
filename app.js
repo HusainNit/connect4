@@ -74,6 +74,7 @@ const handelPlay=(event)=>{
 
     for(let rows= board.length-1; rows >= 0; rows--) {
         if(board[rows][column-1] === ''){
+            // make methods
             board[rows][column-1] =currentTurn;
             console.log(document.getElementById(`${rows+1}-${column}`));
             document.getElementById(`${rows+1}-${column}`).style.backgroundColor=currentTurn;
@@ -108,7 +109,7 @@ const checkForTie=()=>{
 
 const checkColumn=(column)=>{
     let color=currentTurn;
-    for(let rows=board.length-1;rows>=0;rows--){
+    for(let rows=board.length-1;rows>=0;rows--){ //row   not   rows
         if (board[rows][column - 1] === color
             && (rows >= 3 && board[rows - 1][column - 1] === color)
             && (rows >= 2 && board[rows - 2][column - 1] === color)
@@ -140,16 +141,42 @@ const checkRow=()=>{
 
 
 const checkDiagonal=()=>{
- checkRightToLeft()
- checkLeftToRight()
+ checkRightToLeft();
+ checkLeftToRight();
 }
 
 const checkRightToLeft=()=>{
-
+    let color=currentTurn;
+    for(let row=board.length-1;row>=3;row--){
+        for(let column=0;column<=3;column++){
+            if(board[row][column]===color
+               && board[row-1][column+1]===color
+               && board[row-2][column+2]===color
+               && board[row-3][column+3]===color
+            )
+            {
+                winner=true;
+                console.log("win in right to left diagonal");
+            }
+        }
+    }
 }
 
 const checkLeftToRight=()=>{
-
+    let color=currentTurn;
+    for(let row=board.length-1;row>=3;row--){
+        for(let column=6;column>=3;column--){
+            if(board[row][column]===color
+               && board[row-1][column-1]===color
+               && board[row-2][column-2]===color
+               && board[row-3][column-3]===color
+            )
+            {
+                winner=true;
+                console.log("win in left to right diagonal");   
+            }
+        }
+    }
 }
 
 const switchPlayerTurn = ()=>{
