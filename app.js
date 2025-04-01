@@ -24,6 +24,10 @@ let tie;
 const circles=document.querySelectorAll(".play");
 const restBtn=document.querySelector('#rest');
 const messageEl=document.querySelector(`.msg`);
+const instructionsEls=document.querySelectorAll('.subInstructions');
+const startGameBtn=document.querySelector('.startGame');
+const instructionsBoard=document.querySelector('.instructions');
+const boardEl=document.querySelector('.board');
 
 
 /*-------------------------------- Functions --------------------------------*/
@@ -67,7 +71,6 @@ const handelPlay=(event)=>{
         return;
     }
     console.log(`press ${event.target.id}`);
-    //console.log(document.querySelector(event.target.id));//don't works
     let getId = document.getElementById(event.target.id);
     let splitId=getId.id.split('-');
     let column=splitId[1];
@@ -194,7 +197,18 @@ const switchPlayerTurn = ()=>{
     }
 }
 
+const toggleInstructionsContent=(event)=>{
+    const targetElement = event.currentTarget.querySelector('.contentOfInstruction'); 
+    targetElement.classList.toggle('toggles');
+}
 
+const showGameBoardAfterInstructions=()=>{
+    instructionsBoard.classList.toggle('toggles');
+    startGameBtn.remove();
+    messageEl.classList.toggle('toggles');
+    restBtn.classList.toggle('hiddenbtn');
+    boardEl.classList.toggle('toggles');
+}
 
 /*----------------------------- Event Listeners -----------------------------*/
 circles.forEach((currentCircle)=>{
@@ -202,3 +216,9 @@ circles.forEach((currentCircle)=>{
 })
 
 restBtn.addEventListener('click',init);
+
+instructionsEls.forEach((insCont)=>{
+    insCont.addEventListener('click',toggleInstructionsContent)
+})
+
+startGameBtn.addEventListener("click",showGameBoardAfterInstructions)

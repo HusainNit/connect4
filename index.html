@@ -12,8 +12,56 @@
         <h1>connect4</h1>
     </nav>
     <div class="container">
-        <h2 class="msg"></h2>
-        <div class="board">
+        <div class="instructions">
+            <p class="title">Instructions</p>
+            <div class="subInstructions">
+                <p class="instruContent">Objective of the Game</p>
+                <p class="contentOfInstruction toggles">
+                    ■ The goal of Connect 4 is to be the first player to get four of your colored discs in a row, either horizontally, vertically, or diagonally. The first player to do so wins the game.
+                </p>
+            </div>
+            <div class="subInstructions">
+                <p class="instruContent">How to Play</p>
+                <p class="contentOfInstruction toggles">
+                    1. Choosing a Column:<br>
+
+                        On your turn, click or tap on one of the columns. A disc will automatically fall to the lowest available position in that column.<br>
+                        <br>
+                    2. Turns:<br>
+
+                        ■ Players take turns placing their colored discs on the grid.<br>
+
+                        ■ The first player uses a color (for example, red), and the second player uses another color (for example, blue).<br>
+                        <br>
+                    3. Winning the Game:<br>
+                        ■ The first player to connect four discs in a row (horizontally, vertically, or diagonally) wins the game.
+
+                        ■ The game will automatically detect a winning move and declare the winner.<br>
+                        <br>
+                    4. Draw:<br>
+
+                        ■ If all the spaces on the grid are filled and no player has connected four discs in a row, the game ends in a draw.
+                </p>
+            </div>
+            <div class="subInstructions">
+                <p class="instruContent">Basic Rules</p>
+                <p class="contentOfInstruction toggles">
+                    ■ You cannot place a disc in a column if that column is already full (i.e., all the rows in that column are occupied).<br>
+
+                    ■ After a player drops a disc, it is the next player's turn.
+                </p>
+            </div>
+            <div class="subInstructions">
+                <p class="instruContent">Strategy Tips</p>
+                <p class="contentOfInstruction toggles">
+                    ■ Try to block your opponents potential four-in-a-row by placing a disc in a column where they may be about to win.<br>
+
+                    ■ Look for opportunities to create multiple ways to win at once (called a "double threat") to make it difficult for your opponent to block all possibilities of your winning.
+                </p>
+            </div>
+        </div>
+        <h2 class="msg toggles"></h2>
+        <div class="board toggles">
             <div class="play" id="1-1"></div>
             <div class="play" id="1-2"></div>
             <div class="play" id="1-3"></div>
@@ -57,7 +105,8 @@
             <div class="play" id="6-6"></div>
             <div class="play" id="6-7"></div>
         </div>
-        <button id="rest">Restart</button>
+        <button class="startGame">Start the game</button>
+        <button id="rest" class="hiddenbtn">Restart</button>
     </div>
 </body>
 </html>

@@ -76,3 +76,65 @@ h1 {
     cursor: pointer;
     background-color: rgb(37, 37, 37);
 }
+
+div.instructions {
+    max-width: 1000px;
+    min-height: 200px;
+    background-color: black; 
+    border-radius: 20px;
+    margin: 20px auto 20px auto;
+    padding: 5px;
+}
+
+.subInstructions {
+    max-width:980px;
+    min-height: 40px;
+    margin: 10px auto 10px auto;
+    border: 2px gray solid;
+    border-radius: 10px;
+    color: white;
+}
+
+p.instruContent {
+    font-size: 20px;
+    margin: 10px 0 10px 20px;
+    text-decoration: 2px underline;
+}
+
+
+
+.title {
+    color: white;
+    text-align: center;
+    margin: 0;
+    font-size: 40px;
+}
+
+p.contentOfInstruction {
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.toggles {
+    display: none;
+}
+
+.hiddenbtn {
+    visibility: hidden;
+}
+
+.startGame {
+    display: block;
+    margin: 10px auto;
+    color: white;
+    background-color: black;
+    padding: 20px 50px;
+    border-radius: 10px;
+    font-weight: bolder;
+    font-size: 20px;
+    border: 0px;
+}
+
+.startGame:hover {
+    cursor: pointer;
+}
