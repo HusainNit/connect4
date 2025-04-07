@@ -49,6 +49,7 @@ inspiration: https://github.com/Kamide/connect-n?tab=readme-ov-file
 <br>
 
 # Technologies Used
+■ Figma <br>
 ■ HTML<br>
 ■ CSS<br>
 ■ JavaScript
