@@ -38,13 +38,16 @@ inspiration: https://github.com/Kamide/connect-n?tab=readme-ov-file
 <br>
 
 # ScreenShots
-<img src='./images/screenShots/Screenshot 2025-04-02 010141.png'   />
+<img src='./images/screenShots/instructions.png'   />
 <br>
 <br>
-<img src='./images/screenShots/Screenshot 2025-04-02 005738.png'  />
+<img src='./images/screenShots/instructions details.png'  />
 <br>
 <br>
-<img src='./images/screenShots/Screenshot 2025-04-02 005943.png'   />
+<img src='./images/screenShots/board.png'   />
+<br>
+<br>
+<img src='./images/screenShots/simple gameplay.png'   />
 <br>
 <br>
 
