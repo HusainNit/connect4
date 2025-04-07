@@ -59,4 +59,5 @@ inspiration: https://github.com/Kamide/connect-n?tab=readme-ov-file
 2. add more players colors
 3. add sound to the game
 4. add counter to counts the winning
+5. add 1 vs. bot
 
