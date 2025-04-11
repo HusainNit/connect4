@@ -4,17 +4,16 @@ const player=['red','blue']
 
 /*---------------------------- Variables (state) ----------------------------*/
 let board=[
-    ['','','','','','',''], //top                    // 1, 2, 3, 4, 5, 6, 7
+    ['','','','','','',''], 
 
-    ['','','','','','',''],                          // 1, 2, 3, 4, 5, 6, 7
+    ['','','','','','',''],                         
 
-    ['','','','','','',''],                          // 1, 2, 3, 4, 5, 6, 7 
+    ['','','','','','',''],                          
 
-    ['','','','','','',''],                          // 1, 2, 3, 4, 5, 6, 7
+    ['','','','','','',''],                        
+    ['','','','','','',''],                          
 
-    ['','','','','','',''],                          // 1, 2, 3, 4, 5, 6, 7
-
-    ['','','','','','',''],// bottom                 // 1, 2, 3, 4, 5, 6, 7
+    ['','','','','','',''],
 ]
 let currentTurn;
 let winner;
@@ -70,7 +69,6 @@ const handelPlay=(event)=>{
     if(winner===true || tie ===true){
         return;
     }
-    console.log(`press ${event.target.id}`);
     let getId = document.getElementById(event.target.id);
     let splitId=getId.id.split('-');
     let column=splitId[1];
@@ -90,7 +88,6 @@ const handelPlay=(event)=>{
 
 const updateBoard=(row,column)=>{
     board[row][column-1] =currentTurn;
-    console.log(document.getElementById(`${row+1}-${column}`));
     document.getElementById(`${row+1}-${column}`).style.backgroundColor=currentTurn;
 }
 
@@ -98,7 +95,6 @@ const checkForWinner=(column)=>{
     if(winner===true || tie ===true){
         return;
     }
-    console.log("check win");
     checkColumn(column);
     checkRow();
     checkDiagonal();
@@ -120,7 +116,6 @@ const checkColumn=(column)=>{
             && (row >= 1 && board[row - 3][column - 1] === color)
         ){
            winner =true;
-           console.log("wins in column");
         }
     }
 }
@@ -135,7 +130,6 @@ const checkRow=()=>{
                 && board[row][column+3]===color
             ){
                 winner =true;
-                console.log("wins in row");
             }
         }
     }
@@ -160,7 +154,6 @@ const checkRightToLeft=()=>{
             )
             {
                 winner=true;
-                console.log("win in right to left diagonal");
             }
         }
     }
@@ -177,7 +170,6 @@ const checkLeftToRight=()=>{
             )
             {
                 winner=true;
-                console.log("win in left to right diagonal");   
             }
         }
     }
