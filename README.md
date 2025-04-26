@@ -28,8 +28,8 @@ A classic Connect 4 game implementation with [JS].
 deployed game link: https://husainnit.github.io/connect4/ <br>
 
 Planning materials:
-1. [MockUp](./planning/Mockup.png)
-2. [UserStory and Pseudocode](./planning/User-stories-and-Pseudocode.md)
+1. [MockUp](./planning-materials/Mockup.png)
+2. [UserStory and Pseudocode](./planning-materials/User-stories-and-Pseudocode.md)
 
 <br>
 
